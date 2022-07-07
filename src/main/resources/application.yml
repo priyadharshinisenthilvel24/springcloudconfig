@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: native
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///C:/Users/Windows/IdeaProjects/configrepo/ #${HOME}/IdeaProjects/configrepo/
+
+          repos:
+            test-properties-repo:
+              pattern: cloudconfig/test
+              uri:
+
+server:
+  port: 8888
+
+my:
+  greeting: Hello World from local
