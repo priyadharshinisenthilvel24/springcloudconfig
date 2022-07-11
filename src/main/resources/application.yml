@@ -1,3 +1,6 @@
+server:
+  port: 8889
+
 spring:
   profiles:
     active: native
@@ -6,15 +9,29 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:/Users/Windows/IdeaProjects/configrepo/ #${HOME}/IdeaProjects/configrepo/
+          #uri: ${HOME}/IdeaProjects/configrepo
+          #uri: /c/Users/Windows/IdeaProjects/configrepo
+          uri: file:///C:/Users/Windows/IdeaProjects/configrepo/
+          #uri: https://github.com/priyadharshinisenthilvel24/springcloudconfig
 
+          #cloneOnStart: true
           repos:
-            test-properties-repo:
-              pattern: cloudconfig/test
-              uri:
+            test-repo:
+              pattern: userandrolemodule/test
+              uri: https://github.com/priyadharshinisenthilvel24/springcloudconfig/configslocation
+              search-paths:
+                - userandrolemodule/{profile}
 
-server:
-  port: 8888
+            prod-repo:
+              pattern: userandrolemodule/prod
+              uri: https://github.com/priyadharshinisenthilvel24/springcloudconfig/configslocation
+              search-paths:
+                - userandrolemodule/{profile}
 
+            any-repo:
+              uri: https://github.com/priyadharshinisenthilvel24/springcloudconfig/configslocation
+              pattern: userandrolemodule*/*
+              search-paths:
+                - userandrolemodule/{application}/{profile}
 my:
-  greeting: Hello World from local
+  greeting: Hello World from cloud config
